@@ -149,8 +149,8 @@ pip install -r requirements.txt
 ### **4. Create `.env` file**
 
 ```
-OPENAI_API_KEY=your-key
-OPENAI_MODEL=gpt-4o-mini
+GEMINI_API_KEY=your-key
+GEMINI_MODLE=your-modle
 DATABASE_URL=sqlite:///./medassist.db
 ```
 
