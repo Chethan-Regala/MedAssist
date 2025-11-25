@@ -31,3 +31,74 @@ class SymptomEventRead(TriageResponse):
     context: Optional[str]
     created_at: datetime
 
+
+class MedicationConflict(BaseModel):
+    medications: list[str]
+    severity: str
+    reason: str
+
+
+class MedicationCheckRequest(BaseModel):
+    user_id: str
+    medications: list[str] = Field(
+        description="List of medication names (brand or generic).", min_length=1
+    )
+
+
+class MedicationCheckResponse(BaseModel):
+    risk_level: str
+    conflicts: list[MedicationConflict]
+    guidance: str
+
+
+class MedicationCheckRead(MedicationCheckResponse):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    user_id: str
+    medications: list[str]
+    created_at: datetime
+
+
+class ReminderEventRead(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    user_id: str
+    reminder_type: str
+    status: str
+    message: str
+    created_at: datetime
+
+
+class ReminderTaskCreate(BaseModel):
+    user_id: str
+    reminder_type: str = Field(default="medication_check")
+    cadence_minutes: int = Field(default=10080, ge=15)
+    message_template: str = Field(
+        default="Time to review your medications and symptom status."
+    )
+
+
+class ReminderTaskRead(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    user_id: str
+    reminder_type: str
+    cadence_minutes: int
+    next_run_at: datetime
+    is_active: bool
+    message_template: str
+    created_at: datetime
+
+
+class ReminderDeliveryRead(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    task_id: int
+    user_id: str
+    message: str
+    delivered_at: datetime
+

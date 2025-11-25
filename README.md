@@ -75,6 +75,12 @@ It is built to meet competition criteria:
 * Lightweight & reliable for local development
 * Easy to switch to Postgres/Mongo later
 
+### **6. Reminder Loop Agent**
+
+* APScheduler-powered loop agent monitors activity every 30 minutes
+* Generates reminder records when users miss medication checks for >7 days
+* Supports pause/resume controls and exposes reminder history APIs
+
 ---
 
 # 🏗️ **Architecture**
@@ -188,6 +194,49 @@ uvicorn app.main:app --reload
 }
 ```
 
+## **POST /medications/check**
+
+### Request:
+
+```json
+{
+  "user_id": "user-123",
+  "medications": ["warfarin", "aspirin"]
+}
+```
+
+### Response:
+
+```json
+{
+  "risk_level": "high",
+  "conflicts": [
+    {
+      "medications": ["aspirin", "warfarin"],
+      "severity": "high",
+      "reason": "Both thin blood; combination raises hemorrhage risk."
+    }
+  ],
+  "guidance": "High-risk combination detected; seek medical guidance immediately."
+}
+```
+
+## **GET /users/{user_id}/reminders**
+
+Returns generated reminder events for a user.
+
+## **POST /reminders/pause**
+
+Pause the long-running reminder loop.
+
+## **POST /reminders/resume**
+
+Resume the loop agent.
+
+## **GET /reminders/status**
+
+Inspect loop state (running + next run timestamp).
+
 ---
 
 # 🤖 **The Triage Agent (Detailed)**
@@ -222,9 +271,9 @@ You can expand from the MVP into the full system:
 
 ### ✔ Medication Safety Agent
 
-* Integrate with **RxNorm**, **OpenFDA**, **DrugBank**, or Google Search tool
-* Cross-check interactions
-* Output risk score + warnings
+* MVP shipped: rule-based interaction checker + duplicate-dosing guardrails
+* Outputs aggregate risk level, conflict list, and clinician-ready guidance
+* Future: integrate **RxNorm**, **OpenFDA**, **DrugBank**, or retrieval tools for richer data
 
 ### ✔ Explanation Agent
 
