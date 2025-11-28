@@ -1,85 +1,61 @@
-# **MedAssist — Multi-Agent Personal Health Navigator**
+# MedAssist - Multi-Agent Healthcare Assistant
 
-*Transforming personal health support with AI-driven triage, medication safety checks, habit coaching, and explainable reports.*
+A comprehensive healthcare AI system that provides intelligent symptom triage, medication safety checking, and health monitoring through a multi-agent architecture.
 
----
+## Overview
 
-## 🧠 **Overview**
+MedAssist is designed to bridge the gap between patients and healthcare providers by offering:
 
-**MedAssist** is a **multi-agent healthcare assistant** designed to provide safe, explainable, and personalized health guidance. It uses a pipeline of LLM-powered agents to:
+- **Intelligent Symptom Triage**: AI-powered analysis with safety-first approach
+- **Medication Safety**: Real-time drug interaction checking
+- **Health Monitoring**: Continuous background health tracking
+- **Multi-Agent Coordination**: Parallel processing for comprehensive assessments
+- **Memory & Context**: Long-term health history management
 
-* Triage symptoms
-* Detect red flags & assess urgency
-* Check medication conflicts
-* Deliver simple explanations of medical info
-* Track lifestyle habits over time
-* Generate weekly personalized health reports
-* Maintain longitudinal health memory
-* Support periodic monitoring & reminders
+## Core Components
 
-This repository contains the **core backend MVP**, including:
-
-* 🔹 Triage Agent (LLM + rule-based safety layer)
-* 🔹 User session & symptom event storage (SQLite)
-* 🔹 Clean FastAPI backend
-* 🔹 Modular architecture for future agents
-* 🔹 Ready for deployment via Docker / Cloud Run
+- **Triage Agent**: LLM-powered symptom analysis with rule-based safety overrides
+- **Medication Agent**: Drug interaction and safety assessment
+- **Reminder Agent**: Background health monitoring and alerts
+- **Coordination System**: Multi-agent orchestration and communication
 
 ---
 
-# 🌟 **Why MedAssist?**
+## Problem Statement
 
-Healthcare is complex — symptoms are confusing, medication interactions are poorly understood, and people rarely track their own behavior over time.
+Healthcare accessibility remains a significant challenge. Patients often struggle with:
+- Understanding when symptoms require immediate attention
+- Managing complex medication regimens safely
+- Accessing timely health guidance
+- Maintaining consistent health monitoring
 
-MedAssist solves this by creating a **personal health navigator**, not just a chatbot.
-
-It is built to meet competition criteria:
-
-✔ Multi-agent
-✔ Tools & API integrations
-✔ Long-running operations
-✔ Memory & context engineering
-✔ Observability & safety design
-✔ Social impact (Agents for Good)
+MedAssist addresses these challenges through an intelligent, multi-agent system that provides 24/7 health guidance while maintaining safety as the top priority.
 
 ---
 
-# 🚀 **Key Features (MVP)**
+## Key Features
 
-### **1. Symptom Triage Agent**
+### Intelligent Triage System
+- **Smart Analysis**: Combines LLM reasoning with rule-based safety checks
+- **Emergency Detection**: Automatic escalation for critical symptoms
+- **Structured Output**: Consistent, actionable recommendations
+- **Safety First**: Deterministic rules override AI when safety is at risk
 
-* LLM-based reasoning + rule-based safety
-* Detects red flags
-* Classifies symptoms into medical categories
-* Outputs structured JSON only
-* Provides recommended next step (self-care / primary care / ER)
+### Medication Safety
+- **Interaction Checking**: Real-time drug interaction analysis
+- **Risk Assessment**: Categorized risk levels with clear guidance
+- **Duplicate Detection**: Prevents accidental double-dosing
 
-### **2. Rule-based Red Flag Engine**
+### Health Monitoring
+- **Continuous Tracking**: Background monitoring of health patterns
+- **Smart Reminders**: Automated alerts for medication reviews
+- **Historical Analysis**: Long-term health trend identification
 
-* Immediate escalation for life-threatening terms
-* Ensures deterministic safety behavior
-
-### **3. Health Session Logging**
-
-* Every triage interaction is stored securely
-* Builds a longitudinal medical timeline
-
-### **4. FastAPI Backend**
-
-* Clean REST API
-* Type-safe Pydantic schemas
-* Ready for extension with additional agents
-
-### **5. SQLite & SQLModel Database**
-
-* Lightweight & reliable for local development
-* Easy to switch to Postgres/Mongo later
-
-### **6. Reminder Loop Agent**
-
-* APScheduler-powered loop agent monitors activity every 30 minutes
-* Generates reminder records when users miss medication checks for >7 days
-* Supports pause/resume controls and exposes reminder history APIs
+### Technical Architecture
+- **Multi-Agent System**: Coordinated agents for comprehensive analysis
+- **RESTful API**: Clean, documented endpoints
+- **Scalable Database**: SQLModel with easy migration path
+- **Production Ready**: Docker containerization and health checks
 
 ---
 
@@ -382,45 +358,46 @@ gcloud run deploy medassist \
   --allow-unauthenticated
 ```
 
-# 🏆 **Hackathon Compliance**
+## Installation
 
-This project demonstrates **ALL** required hackathon concepts:
-- ✅ Multi-agent system (LLM + Parallel + Sequential + Loop agents)
-- ✅ Tools (MCP + Custom + Built-in + OpenAPI)
-- ✅ Long-running operations (Pause/resume)
-- ✅ Sessions & Memory (InMemorySessionService + MemoryBank + Context engineering)
-- ✅ Observability (Logging + Tracing + Metrics)
-- ✅ Agent evaluation (Systematic testing)
-- ✅ A2A Protocol (Agent-to-agent communication)
-- ✅ Agent deployment (Docker + Docker Compose)
+### Prerequisites
+- Python 3.11+
+- Google Gemini API key
 
-See [HACKATHON.md](HACKATHON.md) for detailed compliance documentation.
+### Setup
 
----
-
-# 🚀 **Quick Start**
-
+1. **Clone the repository**:
 ```bash
-# 1. Clone and setup
 git clone <repository-url>
 cd MedAssist
-cp .env.example .env
-# Edit .env with your Gemini API key
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Run server
-python run_server.py
-
-# 4. Test system
-python comprehensive_test.py
 ```
 
-**Access Points:**
+2. **Configure environment**:
+```bash
+cp .env.example .env
+# Edit .env with your Gemini API key
+```
+
+3. **Install dependencies**:
+```bash
+pip install -r requirements.txt
+```
+
+4. **Run the application**:
+```bash
+uvicorn app.main:app --reload
+```
+
+5. **Access the API**:
 - API: http://127.0.0.1:8000
-- Docs: http://127.0.0.1:8000/docs
-- Test UI: Open `test.html` in browser
+- Documentation: http://127.0.0.1:8000/docs
+
+## Docker Deployment
+
+```bash
+docker build -t medassist .
+docker run -p 8000:8000 --env-file .env medassist
+```
 
 ---
 

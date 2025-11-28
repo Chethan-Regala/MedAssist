@@ -89,3 +89,19 @@ test_api.py
 run_server.py
 start_production.py
 verify_deployment.py
+setup-*.bat
+deploy*.bat
+deploy*.sh
+check_*.py
+*_test_*.py
+comprehensive_*.py
+verify_*.py
+
+# Documentation helpers
+REPOSITORY.md
+PROJECT_STRUCTURE.md
+
+# Deployment helpers
+vertex-ai/
+docker-commands.*
+setup-github.*
