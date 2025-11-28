@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MedAssist UI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>MedAssist — Personal Health Navigator</h1>
+    <div class="env">
+      <label>API Base URL</label>
+      <input id="baseUrl" value="http://127.0.0.1:8000" />
+      <button id="saveBase">Save</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Triage</h2>
+      <div class="row">
+        <label>User ID</label>
+        <input id="triageUser" value="demo-user" />
+      </div>
+      <div class="row">
+        <label>Symptoms</label>
+        <textarea id="symptoms" rows="3" placeholder="Describe symptoms..."></textarea>
+      </div>
+      <div class="row">
+        <label>Context (optional)</label>
+        <input id="context" placeholder="Medical history, recent events..." />
+      </div>
+      <div class="row actions">
+        <button id="doTriage">Run Triage</button>
+      </div>
+      <pre id="triageOut" class="output"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Medication Safety</h2>
+      <div class="row">
+        <label>User ID</label>
+        <input id="medUser" value="demo-user" />
+      </div>
+      <div class="row">
+        <label>Medications (comma separated)</label>
+        <input id="meds" placeholder="e.g., ibuprofen, aspirin" />
+      </div>
+      <div class="row actions">
+        <button id="checkMeds">Check Medications</button>
+      </div>
+      <pre id="medOut" class="output"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Reminders</h2>
+      <div class="row actions">
+        <button id="pause">Pause</button>
+        <button id="resume">Resume</button>
+        <button id="status">Status</button>
+      </div>
+      <pre id="remStatus" class="output"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <small>MedAssist demo UI. Not medical advice.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

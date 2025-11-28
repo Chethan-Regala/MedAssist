@@ -1,0 +1,39 @@
+MANUAL VERTEX AI DEPLOYMENT COMMANDS
+====================================
+
+STEP 1: Install Google Cloud SDK
+Download from: https://cloud.google.com/sdk/docs/install
+
+STEP 2: Initialize gcloud
+gcloud init
+gcloud auth login
+gcloud config set project YOUR_PROJECT_ID
+
+STEP 3: Enable APIs
+gcloud services enable aiplatform.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+gcloud services enable run.googleapis.com
+
+STEP 4: Build Container (run from MedAssist root directory)
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/medassist .
+
+STEP 5: Deploy to Cloud Run
+gcloud run deploy medassist-api --image gcr.io/YOUR_PROJECT_ID/medassist --platform managed --region us-central1 --allow-unauthenticated --port 8000 --memory 2Gi --cpu 1 --set-env-vars "GEMINI_API_KEY=YOUR_GEMINI_API_KEY,GEMINI_MODEL=gemini-2.5-flash"
+
+STEP 6: Get Cloud Run URL
+gcloud run services describe medassist-api --region us-central1 --format "value(status.url)"
+
+STEP 7: Create Vertex AI Agent
+1. Go to: https://console.cloud.google.com/ai/agents
+2. Click "Create Agent"
+3. Use the Cloud Run URL from Step 6
+4. Import tools from agent-tools.json
+5. Add system instructions from agent-config.yaml
+
+STEP 8: Test
+curl -X POST "YOUR_CLOUD_RUN_URL/test" -H "Content-Type: application/json" -d "{}"
+
+REPLACE:
+- YOUR_PROJECT_ID with your GCP project ID
+- YOUR_GEMINI_API_KEY with your actual Gemini API key
+- YOUR_CLOUD_RUN_URL with the URL from Step 6

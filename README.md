@@ -382,6 +382,48 @@ gcloud run deploy medassist \
   --allow-unauthenticated
 ```
 
+# 🏆 **Hackathon Compliance**
+
+This project demonstrates **ALL** required hackathon concepts:
+- ✅ Multi-agent system (LLM + Parallel + Sequential + Loop agents)
+- ✅ Tools (MCP + Custom + Built-in + OpenAPI)
+- ✅ Long-running operations (Pause/resume)
+- ✅ Sessions & Memory (InMemorySessionService + MemoryBank + Context engineering)
+- ✅ Observability (Logging + Tracing + Metrics)
+- ✅ Agent evaluation (Systematic testing)
+- ✅ A2A Protocol (Agent-to-agent communication)
+- ✅ Agent deployment (Docker + Docker Compose)
+
+See [HACKATHON.md](HACKATHON.md) for detailed compliance documentation.
+
+---
+
+# 🚀 **Quick Start**
+
+```bash
+# 1. Clone and setup
+git clone <repository-url>
+cd MedAssist
+cp .env.example .env
+# Edit .env with your Gemini API key
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run server
+python run_server.py
+
+# 4. Test system
+python comprehensive_test.py
+```
+
+**Access Points:**
+- API: http://127.0.0.1:8000
+- Docs: http://127.0.0.1:8000/docs
+- Test UI: Open `test.html` in browser
+
+---
+
 # 🌈 **Future Roadmap**
 
 * Wearable device integration (Fitbit, Apple Health)

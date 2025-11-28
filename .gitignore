@@ -1,2 +1,91 @@
+# Environment variables (CRITICAL - NEVER COMMIT)
 .env
-PROJECT_STATUS.md
+.env.local
+.env.production
+*.env
+
+# API Keys and Secrets
+*api_key*
+*secret*
+*token*
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+medassist.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing and Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDE and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Docker
+.dockerignore
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Development and testing files
+test_*.py
+*_test.py
+check_*.py
+comprehensive_test.py
+test_api.py
+
+# Local development scripts
+run_server.py
+start_production.py
+verify_deployment.py

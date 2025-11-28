@@ -9,6 +9,7 @@ from app.schemas import (
     MedicationConflict,
 )
 from app.utils import configure_logging
+from app.observability.metrics import track_execution
 
 
 class MedicationSafetyAgent:
@@ -40,6 +41,7 @@ class MedicationSafetyAgent:
     def __init__(self) -> None:
         self.logger = configure_logging()
 
+    @track_execution("medication_agent")
     async def run(self, request: MedicationCheckRequest) -> MedicationCheckResponse:
         normalized = [med.strip().lower() for med in request.medications if med.strip()]
         conflicts: List[MedicationConflict] = []

@@ -21,7 +21,7 @@ class Settings(BaseModel):
         default=os.getenv("GEMINI_API_KEY"), description="Google Gemini API key."
     )
     gemini_model: str = Field(
-        default=os.getenv("GEMINI_MODEL", "gemini-1.5-flash"),
+        default=os.getenv("GEMINI_MODEL", "gemini-2.5-flash"),
         description="Gemini model name to use for LLM calls.",
     )
     log_level: str = Field(

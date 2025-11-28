@@ -1,0 +1,68 @@
+{
+  "agent_configuration": {
+    "displayName": "MedAssist Healthcare AI",
+    "description": "Multi-agent healthcare assistant with triage, medication safety, and monitoring",
+    "defaultLanguageCode": "en",
+    "timeZone": "UTC",
+    "systemInstruction": "You are MedAssist, a professional healthcare AI assistant. You help users with: 1. Medical symptom triage and recommendations 2. Medication safety and interaction checking 3. Health monitoring and reminders. Always prioritize safety and recommend professional medical care when appropriate. Use the available tools to provide accurate, evidence-based responses."
+  },
+  "tools_to_add": [
+    {
+      "name": "triage_tool",
+      "displayName": "Medical Triage",
+      "description": "Analyze symptoms and provide triage recommendations",
+      "endpoint": "POST {CLOUD_RUN_URL}/triage",
+      "requestSchema": {
+        "type": "object",
+        "properties": {
+          "user_id": {"type": "string"},
+          "symptoms": {"type": "string"},
+          "context": {"type": "string"}
+        },
+        "required": ["user_id", "symptoms"]
+      }
+    },
+    {
+      "name": "medication_tool", 
+      "displayName": "Medication Safety",
+      "description": "Check drug interactions and safety",
+      "endpoint": "POST {CLOUD_RUN_URL}/medications/check",
+      "requestSchema": {
+        "type": "object",
+        "properties": {
+          "user_id": {"type": "string"},
+          "medications": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        },
+        "required": ["user_id", "medications"]
+      }
+    },
+    {
+      "name": "health_assessment_tool",
+      "displayName": "Health Assessment", 
+      "description": "Comprehensive parallel health assessment",
+      "endpoint": "POST {CLOUD_RUN_URL}/health-assessment",
+      "requestSchema": {
+        "type": "object",
+        "properties": {
+          "user_id": {"type": "string"},
+          "symptoms": {"type": "string"},
+          "medications": {
+            "type": "array", 
+            "items": {"type": "string"}
+          },
+          "context": {"type": "string"}
+        },
+        "required": ["user_id", "symptoms"]
+      }
+    }
+  ],
+  "safety_settings": [
+    {
+      "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    }
+  ]
+}

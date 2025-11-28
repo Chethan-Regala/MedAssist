@@ -1,0 +1,15 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
+header { padding: 16px 24px; background: #111827; border-bottom: 1px solid #1f2937; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+h1 { margin: 0; font-size: 20px; }
+.env { display:flex; align-items:center; gap:8px; }
+.env input { padding: 6px 8px; width: 260px; background:#0b1220; color:#e2e8f0; border:1px solid #1f2937; border-radius:6px; }
+button { background:#22c55e; color:#0b1220; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:600; }
+button:hover { background:#16a34a; }
+main { max-width: 1000px; margin: 24px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; padding: 0 16px; }
+.card { background:#0b1220; border:1px solid #1f2937; border-radius:12px; padding:16px; }
+.row { display:flex; flex-direction:column; gap:6px; margin:10px 0; }
+.row input, .row textarea { padding:8px; background:#0f172a; color:#e2e8f0; border:1px solid #1f2937; border-radius:8px; }
+.actions { display:flex; gap:8px; }
+.output { background:#0f172a; border:1px dashed #334155; padding:10px; border-radius:8px; min-height:60px; white-space:pre-wrap; }
+footer { text-align:center; padding:12px; color:#94a3b8; }
