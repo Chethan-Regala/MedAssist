@@ -95,7 +95,7 @@ deploy*.sh
 check_*.py
 *_test_*.py
 comprehensive_*.py
-verify_*.py
+# Note: verify_system.py is kept for judges
 
 # Documentation helpers
 REPOSITORY.md
