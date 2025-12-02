@@ -1,7 +1,5 @@
 # MedAssist - Multi-Agent Healthcare Assistant
 
-🏆 **[HACKATHON JUDGES: See HACKATHON_EVALUATION.md for complete evaluation guide](./HACKATHON_EVALUATION.md)**
-
 A comprehensive healthcare AI system that provides intelligent symptom triage, medication safety checking, and health monitoring through a multi-agent architecture.
 
 ## Overview
