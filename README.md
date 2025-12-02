@@ -61,6 +61,8 @@ MedAssist addresses these challenges through an intelligent, multi-agent system 
 
 # **Architecture**
 
+![MedAssist Architecture](docs/architecture.png)
+
 ```
 User
   ↓
