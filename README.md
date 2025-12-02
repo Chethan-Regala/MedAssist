@@ -59,7 +59,7 @@ MedAssist addresses these challenges through an intelligent, multi-agent system 
 
 ---
 
-# 🏗️ **Architecture**
+# **Architecture**
 
 ```
 User
@@ -81,7 +81,7 @@ Multi-agent pipeline (future)
 
 ---
 
-# 📁 **Repository Structure**
+# **Repository Structure**
 
 ```
 medassist/
@@ -106,7 +106,7 @@ medassist/
 
 ---
 
-# ⚙️ **Installation & Setup**
+# **Installation & Setup**
 
 ### **1. Clone**
 
@@ -215,7 +215,7 @@ Inspect loop state (running + next run timestamp).
 
 ---
 
-# 🤖 **The Triage Agent (Detailed)**
+# **The Triage Agent (Detailed)**
 
 ### LLM Prompting
 
@@ -241,7 +241,7 @@ This hybrid approach yields **safe, reliable, audit-friendly** medical triage.
 
 ---
 
-# 🧩 **Extending into Full Multi-Agent MedAssist**
+# **Extending into Full Multi-Agent MedAssist**
 
 You can expand from the MVP into the full system:
 
@@ -279,7 +279,7 @@ Each agent will be added in `/app/agents/`.
 
 ---
 
-# 🛡️ **Safety & Compliance**
+# **Safety & Compliance**
 
 MedAssist is **NOT a medical device**.
 It provides **informational triage assistance**, not diagnosis.
@@ -303,7 +303,7 @@ It provides **informational triage assistance**, not diagnosis.
 
 ---
 
-# 📊 **Evaluation Plan**
+# **Evaluation Plan**
 
 ### 1. **Unit Tests**
 
@@ -401,7 +401,7 @@ docker run -p 8000:8000 --env-file .env medassist
 
 ---
 
-# 🌈 **Future Roadmap**
+# **Future Roadmap**
 
 * Wearable device integration (Fitbit, Apple Health)
 * Full medication safety graph model
@@ -411,14 +411,14 @@ docker run -p 8000:8000 --env-file .env medassist
 
 ---
 
-# ❤️ **Contributors**
+# **Contributors**
 
 **Chethan** – Creator & Engineer
 Open to contributors & collaborators.
 
 ---
 
-# 🏁 **License**
+# **License**
 
 MIT License — free for personal & commercial use.
 
